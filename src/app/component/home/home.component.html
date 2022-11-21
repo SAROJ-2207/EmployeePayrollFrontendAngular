@@ -1,0 +1,54 @@
+<body>    
+    <div class="main-content">
+        <div class="header-content">
+            <div class="emp-details-text">
+                Employee Details
+            <div class="emp-count">{{count}}</div>
+        </div>
+        <img id="search" src="../../../assets/search.png " alt="search">
+        <a routerLink="form" class="add-button">     
+        <label for="">+Add User</label></a>
+    </div>
+    <table id="display" class="table">
+        <tr>           
+            <th>Profile</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Address</th>
+            <th>Companyname</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Start Date</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let employee of list">
+            <td>
+                <img class="profile" src="{{employee.profilePic}}" alt="">
+            </td>
+
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.address}}</td>
+            <td>{{employee.companyName}}</td>
+            <td>{{employee.gender}}</td>
+            <td>
+                <!-- <div class="dept-label" *ngFor="let department of employee.department">
+                    {{department}}
+                </div> -->
+                {{employee.department}}
+            </td>
+            <td>{{employee.salary | currency:'INR'}}</td>
+            <td>{{employee.startDate | date: 'dd MMM yyyy'}}</td>
+            <td>
+                <img src="../../../assets/delete.jpeg" id="{{employee.employeeId}}"
+                 alt="delete" (click)="onDelete(employee.employeeId)">
+
+                <img src="../../../assets/edit.jpeg" alt="edit"
+                 (click)="onUpdate(employee.employeeId)"
+                id={{employee.employeeId}}>
+            </td>
+        </tr>
+    </table> 
+</div>
+</body>
